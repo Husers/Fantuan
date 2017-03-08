@@ -1,10 +1,3 @@
-target/
-.mvn/
-/src/main/resources/application-prod.properties
-mvnw.cmd
-mvnw
-
-
 ### STS ###
 .apt_generated
 .classpath
@@ -26,3 +19,10 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+target/
+.mvn/
+/src/main/resources/application-prod.properties
+mvnw.cmd
+mvnw
+
