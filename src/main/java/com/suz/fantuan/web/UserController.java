@@ -59,7 +59,9 @@ public class UserController {
     }
 
     @RequestMapping("register.action")
-    public void Register(HttpServletResponse response, User user) throws IOException {
+    public void Register(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        user.setUsername(request.getParameter("user"));
+        user.setPassword(request.getParameter("pass"));
         userService.registerUser(user);
         response.sendRedirect("login");
     }

@@ -35,4 +35,13 @@ public class User {
     public void setMeals(String meals) {
         this.meals = meals;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", meals='" + meals + '\'' +
+                '}';
+    }
 }

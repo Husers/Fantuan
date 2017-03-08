@@ -47,11 +47,10 @@ public class UserControllerTest extends WebBase {
 
     @Test
     public void testRegister() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/login.action")
+        mockMvc.perform(MockMvcRequestBuilders.post("/register.action")
                 .session(session)
                 .cookie(cookie)
-                .param("user", "huliang", "pass", "123123", "auto", "1"))
-                .andExpect(status().isOk())
+                .param("user", "huliang").param("pass", "123123"))
                 .andDo(print())
                 .andReturn();
     }
