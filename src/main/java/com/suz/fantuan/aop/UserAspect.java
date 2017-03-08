@@ -71,9 +71,9 @@ public class UserAspect {
     @AfterReturning(returning = "result", pointcut = "checkPassword()")
     public void checkPasswordAfterReturning(boolean result) {
         if (result) {
-            logger.info("{} failed to log in");
-        } else {
             logger.info("{} successful login", username);
+        } else {
+            logger.info("{} failed to log in");
         }
     }
 
