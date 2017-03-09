@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand">饭团</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a th:href="@{/index}">提交餐费</a>
+                </li>
+                <li>
+                    <a th:href="@{/refill}">充值餐费</a>
+                </li>
+                <li>
+                    <a th:href="@{/record}">餐费记录</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" target="_blank">退出登录</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div th:fragment="footer" id="footer" class="container">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="navbar-inner navbar-content-center">
+            <p class="text-muted credit" style="padding: 10px;">
+                <small>当前登录用户：胡亮</small>
+            </p>
+        </div>
+    </nav>
+</div>
+</body>
+</html>

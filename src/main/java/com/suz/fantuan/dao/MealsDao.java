@@ -6,6 +6,6 @@ package com.suz.fantuan.dao;
  */
 public interface MealsDao {
     String findMealsByName(String username);
-
     void updateMealsByName(String username, String meals);
+    String findSumMeals();
 }

@@ -13,4 +13,6 @@ public interface MealsService {
     void addRecord(Record record);
     String refillMeals(String username,String money);
     String spendMeals(String username,String money);
+    String findMealsByName(String username);
+    String findSumMeals();
 }

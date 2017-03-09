@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @RequestMapping("login.action")
-    public void Login(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String Login(HttpServletRequest request, HttpServletResponse response) throws IOException {
         if (request.getParameter("pass") != null && request.getParameter("user") != null) {
             user.setUsername(request.getParameter("user"));
             user.setPassword(request.getParameter("pass"));
@@ -53,26 +53,31 @@ public class UserController {
                         removeLoginCookie(request, response);
                     }
                 }
-                response.sendRedirect("index");
+                return "index";
             }
         }
+        return "login";
     }
 
     @RequestMapping("register.action")
-    public void Register(HttpServletRequest request,HttpServletResponse response) throws IOException {
+    public String Register(HttpServletRequest request, HttpServletResponse response) throws IOException {
         user.setUsername(request.getParameter("user"));
         user.setPassword(request.getParameter("pass"));
         userService.registerUser(user);
-        response.sendRedirect("login");
+        Cookie accountCookie = new Cookie(Web.BS_COOKIE_ACCOUNT, request.getParameter("user"));
+        accountCookie.setMaxAge(Web.BS_COOKIE_MAX_AGE);
+        accountCookie.setPath(Web.LOGIN_URL);
+        response.addCookie(accountCookie);
+        return "login";
     }
 
     @RequestMapping("modifyPW.action")
-    public void ModifyPW(HttpServletRequest request, HttpServletResponse response, @CookieValue(Web.BS_COOKIE_ACCOUNT) String username, String password) throws IOException {
+    public String ModifyPW(HttpServletRequest request, HttpServletResponse response, @CookieValue(Web.BS_COOKIE_ACCOUNT) String username, String password) throws IOException {
         user.setUsername(username);
         user.setPassword(password);
         userService.modifyPassword(user);
         removeLoginCookie(request, response);
-        response.sendRedirect("login");
+        return "login";
     }
 
     private void removeLoginCookie(HttpServletRequest request, HttpServletResponse response) {

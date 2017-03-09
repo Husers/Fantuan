@@ -40,7 +40,7 @@ public class MealsServiceImpl implements MealsService {
         BigDecimal balance = new BigDecimal(mealsDao.findMealsByName(username));
         BigDecimal moneyNum = new BigDecimal(money);
         money = balance.add(moneyNum).toString();
-        mealsDao.updateMealsByName(username,money);
+        mealsDao.updateMealsByName(username, money);
         return money;
     }
 
@@ -49,7 +49,17 @@ public class MealsServiceImpl implements MealsService {
         BigDecimal balance = new BigDecimal(mealsDao.findMealsByName(username));
         BigDecimal moneyNum = new BigDecimal(money);
         money = balance.subtract(moneyNum).toString();
-        mealsDao.updateMealsByName(username,money);
+        mealsDao.updateMealsByName(username, money);
         return money;
+    }
+
+    @Override
+    public String findMealsByName(String username) {
+        return mealsDao.findMealsByName(username);
+    }
+
+    @Override
+    public String findSumMeals() {
+        return mealsDao.findSumMeals();
     }
 }
